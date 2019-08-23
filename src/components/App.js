@@ -43,11 +43,11 @@ class Callback extends React.Component {
 
 class Logout extends React.Component {
   async componentDidMount() {
-      StorageFunctions.deleteUser();
-      this.props.history.replace("/home");
   }
 
   render() {
+    StorageFunctions.deleteUser();
+    this.props.history.replace("/home");
     return <></>
   }
 }
