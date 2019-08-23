@@ -22,9 +22,9 @@ module.exports = {
       "process.env.API_URL": JSON.stringify(
         "https://uade-sso-management-api.herokuapp.com"
       ),
-      "process.env.CALLBACK_URL": "https://uade-sso-management-dashboard.herokuapp.com/callback",
-      "process.env.TENANT_ID": "c6ced67c-d0f4-4084-b4ff-5086b7478722",
-      "process.env.LOGIN_BASE_URL": "https://uade-sso-login.herokuapp.com"
+      "process.env.CALLBACK_URL": JSON.stringify("https://uade-sso-management-dashboard.herokuapp.com/callback"),
+      "process.env.TENANT_ID": JSON.stringify("c6ced67c-d0f4-4084-b4ff-5086b7478722"),
+      "process.env.LOGIN_BASE_URL": JSON.stringify("https://uade-sso-login.herokuapp.com"),
     }),
     new HtmlWebpackPlugin({
       template: "src/index.html",
