@@ -12,6 +12,7 @@ import Header from "./common/Header";
 import HomePage from "./HomePage";
 import UserPage from "./users/UserPage";
 import * as StorageFunctions from "../utils/StorageFunctions";
+import * as Configs from "../Configs"
 
 function App() {
   return (
@@ -64,7 +65,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Route
       render={() => {
-        window.location.replace("https://uade-sso-login.herokuapp.com/login?tenant=c6ced67c-d0f4-4084-b4ff-5086b7478722&redirect=http://localhost:8081/callback");
+        window.location.replace(Configs.LoginUrl);
         return <></>;
       }}/>
       );
