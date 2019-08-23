@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const SelectInput = ({
   name,
@@ -39,17 +38,6 @@ const SelectInput = ({
       </div>
     </div>
   );
-};
-
-SelectInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  defaultOption: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  error: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.object),
-  isNumber: PropTypes.bool
 };
 
 export default SelectInput;

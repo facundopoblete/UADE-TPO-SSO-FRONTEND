@@ -1,10 +1,9 @@
 export async function saveUser(user) {
-  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("user", user);
 }
 
-export async function getUser() {
-  return {};
-  //JSON.parse(localStorage.getItem("user"));
+export function getUser() {
+  return localStorage.getItem("user");
 }
 
 export async function deleteUser() {

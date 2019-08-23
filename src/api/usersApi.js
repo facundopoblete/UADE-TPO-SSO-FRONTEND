@@ -2,9 +2,9 @@ import { handleResponse, handleError, authHeader } from "./apiUtils";
 import { BaseUrl } from "./ApiConfig";
 const baseUrl = BaseUrl + "/api/Users";
 
-export async function getUser(user) {
+export async function getUser(id) {
   try {
-    const response = await fetch(baseUrl + "/" + user.id, {
+    const response = await fetch(baseUrl + "/" + id, {
       headers: await authHeader(),
     });
     return await handleResponse(response);
