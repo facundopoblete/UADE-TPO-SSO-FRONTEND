@@ -56,7 +56,6 @@ export function getUsers() {
   };
 }
 
-
 export function createUser(user) {
   return async function(dispatch) {
     dispatch(requestActions.informNewRequest());

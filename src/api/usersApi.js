@@ -5,7 +5,7 @@ const baseUrl = BaseUrl + "/api/Users";
 export async function getUser(id) {
   try {
     const response = await fetch(baseUrl + "/" + id, {
-      headers: await authHeader(),
+      headers: await authHeader()
     });
     return await handleResponse(response);
   } catch (ex) {

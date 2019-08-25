@@ -1,5 +1,5 @@
-export async function saveUser(user) {
-  localStorage.setItem("user", user);
+export async function saveUser(jwt) {
+  localStorage.setItem("user", jwt);
 }
 
 export function getUser() {

@@ -27,7 +27,8 @@ module.exports = {
       "process.env.API_URL": JSON.stringify(
         "https://uade-sso-management-api.herokuapp.com"
       ),
-      "process.env.CALLBACK_URL": JSON.stringify("https://uade-sso-management-dashboard.herokuapp.com/callback"),
+      "process.env.CALLBACK_URL": JSON.stringify("http://127.0.0.1:8081/callback"),
+      "process.env.HOME_URL": JSON.stringify("http://127.0.0.1:8081/home"),
       "process.env.TENANT_ID": JSON.stringify("c6ced67c-d0f4-4084-b4ff-5086b7478722"),
       "process.env.LOGIN_BASE_URL": JSON.stringify("https://uade-sso-login.herokuapp.com"),
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)

@@ -22,14 +22,10 @@ export function handleError(error) {
 }
 
 export async function authHeader() {
-  //let user = await StorageFunctions.getUser();
-  
-  let user = {
-    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjYmE4MGEyYy0zMjNiLTRiN2ItOWM4Zi1hMDRjYTZkYjk3MmYiLCJuYmYiOjE1NjY0MjkzOTUsImV4cCI6MTU2NjQzMjk5NSwiaWF0IjoxNTY2NDI5Mzk1LCJpc3MiOiJVQURFIFNTTyIsImF1ZCI6ImQ0ZWYzYWY3YWMxYjQxZjM4YzExZjFiYWQyZDIxMzNmIn0.BnpgwLckU6i9NCMYKClTEDzHdrdUo_rGMfEFTzXtsH0"
-  };
+  let jwt = StorageFunctions.getUser();
 
-  if (user && user.token) {
-    return { Authorization: "Bearer " + user.token };
+  if (jwt) {
+    return { Authorization: "Bearer " + jwt };
   } else {
     return {};
   }

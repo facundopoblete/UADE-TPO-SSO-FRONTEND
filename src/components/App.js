@@ -11,8 +11,9 @@ import UsersPage from "./users/UsersPage";
 import Header from "./common/Header";
 import HomePage from "./HomePage";
 import UserPage from "./users/UserPage";
+import TenantSettingsPage from "./settings/tenantSettingsPage";
 import * as StorageFunctions from "../utils/StorageFunctions";
-import * as Configs from "../Configs"
+import * as Configs from "../Configs";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <PrivateRoute path="/logout" component={Logout} />
           <PrivateRoute path="/users" component={UsersPage} />
           <PrivateRoute path="/home" component={HomePage} />
+          <PrivateRoute path="/settings" component={TenantSettingsPage} />
           <PrivateRoute path="/user/:id?" component={UserPage} />
           <PrivateRoute component={HomePage} />
         </Switch>
@@ -32,24 +34,24 @@ function App() {
 }
 
 class Callback extends React.Component {
-  async componentDidMount() {
-      StorageFunctions.saveUser(window.location.hash);
-      this.props.history.replace("/home");
+  componentDidMount() {
+    StorageFunctions.saveUser(window.location.hash.substring(1));
+    this.props.history.replace("/home");
   }
 
   render() {
-      return <p>Loading profile...</p>;
+    return <p>Loading profile...</p>;
   }
 }
 
 class Logout extends React.Component {
   async componentDidMount() {
+    StorageFunctions.deleteUser();
+    window.location.replace(Configs.LogoutUrl);
   }
 
   render() {
-    StorageFunctions.deleteUser();
-    this.props.history.replace("/home");
-    return <></>
+    return <></>;
   }
 }
 
@@ -57,17 +59,18 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => {
-      return  StorageFunctions.getUser() !== null ? (
+      return StorageFunctions.getUser() !== null ? (
         <>
           <Header />
           <Component {...props} />
         </>
       ) : (
         <Route
-      render={() => {
-        window.location.replace(Configs.LoginUrl);
-        return <></>;
-      }}/>
+          render={() => {
+            window.location.replace(Configs.LoginUrl);
+            return <></>;
+          }}
+        />
       );
     }}
   />

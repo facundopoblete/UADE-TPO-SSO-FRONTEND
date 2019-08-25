@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  const activeStyle = { color: "#24f191", "fontWeight": "bolder" };
+  const activeStyle = { color: "#24f191", fontWeight: "bolder" };
 
   return (
     <div className="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
@@ -32,14 +32,13 @@ const Header = () => {
                 activeStyle={activeStyle}
               >
                 <span
-                    className="d-block d-md-none"
-                    data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                    Settings
+                  className="d-block d-md-none"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse"
+                >
+                  Settings
                 </span>
-                <span className="d-none d-md-block">
-                    Settings
-                </span>
+                <span className="d-none d-md-block">Settings</span>
               </NavLink>
             </li>
 
@@ -50,14 +49,13 @@ const Header = () => {
                 activeStyle={activeStyle}
               >
                 <span
-                    className="d-block d-md-none"
-                    data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                    Usuarios
+                  className="d-block d-md-none"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse"
+                >
+                  Usuarios
                 </span>
-                <span className="d-none d-md-block">
-                Usuarios
-                </span>
+                <span className="d-none d-md-block">Usuarios</span>
               </NavLink>
             </li>
 
