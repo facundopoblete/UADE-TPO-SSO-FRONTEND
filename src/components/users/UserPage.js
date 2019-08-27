@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as usersApi from "../../api/usersApi";
 import TextInput from "../common/TextInput";
-import JSONInput from "react-json-editor-ajrm";
+import ReactJson from "react-json-view";
 import locale from "react-json-editor-ajrm/locale/en";
 
 const DEFAULT_STATE = {};
@@ -25,6 +25,15 @@ class UserPage extends Component {
     this.setState(DEFAULT_STATE);
   };
 
+  updateUser = async () => {
+    try {
+      await usersApi.updateUser(this.state.user);
+      alert("Saved");
+    } catch (e) {
+      alert("error: " + e.message);
+    }
+  };
+
   render() {
     if (this.state.user == null) return <></>;
 
@@ -33,6 +42,15 @@ class UserPage extends Component {
         <div className="row">
           <div className="col-12">
             <h1 className="font-weight-normal">User {this.state.user.email}</h1>
+          </div>
+          <div>
+            <button
+              type="button"
+              onClick={this.updateUser}
+              className="btn btn-primary"
+            >
+              Update
+            </button>
           </div>
         </div>
         <div className="row">
@@ -43,6 +61,15 @@ class UserPage extends Component {
                 name="FullName"
                 label="Full Name"
                 value={this.state.user.fullName}
+                onChange={e =>
+                  this.setState({
+                    ...this.state,
+                    user: {
+                      ...this.state.user,
+                      fullName: e.target.value
+                    }
+                  })
+                }
               />
               <TextInput
                 name="Email"
@@ -52,17 +79,44 @@ class UserPage extends Component {
               <div className="form-group">
                 <label htmlFor="app_metadata">App Metadata</label>
                 <div className="field">
-                  <JSONInput
+                  <ReactJson
+                    theme="monokai"
+                    onEdit={e => {
+                      this.setState({
+                        ...this.state,
+                        user: {
+                          ...this.state.user,
+                          metadata: JSON.stringify(e.updated_src)
+                        }
+                      });
+                    }}
+                    onAdd={e => {
+                      this.setState({
+                        ...this.state,
+                        user: {
+                          ...this.state.user,
+                          metadata: JSON.stringify(e.updated_src)
+                        }
+                      });
+                    }}
+                    onDelete={e => {
+                      this.setState({
+                        ...this.state,
+                        user: {
+                          ...this.state.user,
+                          metadata: JSON.stringify(e.updated_src)
+                        }
+                      });
+                    }}
                     name="app_metadata"
                     id="app_metadata"
-                    placeholder={
+                    src={
                       this.state.user.metadata == null
                         ? {}
                         : JSON.parse(this.state.user.metadata)
                     }
                     locale={locale}
                     height="200px"
-                    onChange={event => {}}
                   />
                 </div>
               </div>
@@ -70,17 +124,44 @@ class UserPage extends Component {
               <div className="form-group">
                 <label htmlFor="claim_metadata">Claim Metadata</label>
                 <div className="field">
-                  <JSONInput
+                  <ReactJson
                     name="claim_metadata"
                     id="claim_metadata"
-                    placeholder={
+                    src={
                       this.state.user.extraClaims == null
                         ? {}
                         : JSON.parse(this.state.user.extraClaims)
                     }
                     locale={locale}
                     height="200px"
-                    onChange={event => {}}
+                    theme="monokai"
+                    onEdit={e => {
+                      this.setState({
+                        ...this.state,
+                        user: {
+                          ...this.state.user,
+                          extraClaims: JSON.stringify(e.updated_src)
+                        }
+                      });
+                    }}
+                    onAdd={e => {
+                      this.setState({
+                        ...this.state,
+                        user: {
+                          ...this.state.user,
+                          extraClaims: JSON.stringify(e.updated_src)
+                        }
+                      });
+                    }}
+                    onDelete={e => {
+                      this.setState({
+                        ...this.state,
+                        user: {
+                          ...this.state.user,
+                          extraClaims: JSON.stringify(e.updated_src)
+                        }
+                      });
+                    }}
                   />
                 </div>
               </div>

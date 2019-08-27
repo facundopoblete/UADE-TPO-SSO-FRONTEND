@@ -28,7 +28,7 @@ class HomePage extends React.Component {
       await tenantApi.createNewTenant(this.state.name);
       this.props.history.replace("/users");
     } catch (e) {
-      alert("error");
+      alert("error: " + e.message);
     }
   };
 

@@ -13,6 +13,24 @@ export async function getTenant() {
   }
 }
 
+export async function updateTenant(tenant) {
+  try {
+    const response = await fetch(baseUrl, {
+      method: "PUT",
+      body: JSON.stringify({
+        name: tenant.name,
+        jwtSigningKey: tenant.jwtSigningKey,
+        jwtDuration: tenant.jwtDuration,
+        allowPublicUsers: tenant.allowPublicUsers
+      }),
+      headers: { "Content-Type": "application/json", ...(await authHeader()) }
+    });
+    return await handleResponse(response);
+  } catch (ex) {
+    handleError(ex);
+  }
+}
+
 export async function createNewTenant(name) {
   try {
     const response = await fetch(baseUrl, {

@@ -29,6 +29,7 @@ const CheckboxInput = ({
           className="form-control"
           placeholder={placeholder}
           value={value}
+          checked={value === true ? "checked" : null}
           onChange={onInternalChange}
         />
         {error && <div className="alert alert-danger">{error}</div>}

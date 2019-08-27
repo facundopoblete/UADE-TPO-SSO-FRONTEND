@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     try {
       tenant = await tenantApi.getTenant();
     } catch (e) {
-      alert("error");
+      alert("error: " + e.message);
     }
 
     this.setState({
@@ -25,10 +25,10 @@ class HomePage extends React.Component {
 
   updateTenant = async () => {
     try {
-      // TODO: update tenant
-      let a = 3;
+      tenantApi.updateTenant(this.state.tenant);
+      alert("Saved");
     } catch (e) {
-      alert("error");
+      alert("error: " + e.message);
     }
   };
 
@@ -57,29 +57,61 @@ class HomePage extends React.Component {
                 name="Name"
                 label="Tenant Name"
                 value={this.state.tenant.name}
-                onChange={null}
+                onChange={e => {
+                  this.setState({
+                    ...this.state,
+                    tenant: {
+                      ...this.state.tenant,
+                      name: e.target.value
+                    }
+                  });
+                }}
               />
               <TextInput
                 name="JwtSigningKey"
                 label="JWT Signing Key"
                 value={this.state.tenant.jwtSigningKey}
-                onChange={null}
+                onChange={e => {
+                  this.setState({
+                    ...this.state,
+                    tenant: {
+                      ...this.state.tenant,
+                      jwtSigningKey: e.target.value
+                    }
+                  });
+                }}
               />
               <TextInput
                 name="JWTDuration"
                 label="JWT Duration"
                 value={this.state.tenant.jwtDuration}
-                onChange={null}
+                onChange={e => {
+                  this.setState({
+                    ...this.state,
+                    tenant: {
+                      ...this.state.tenant,
+                      jwtDuration: e.target.value
+                    }
+                  });
+                }}
               />
               <CheckboxInput
                 name="AllowPublicUsers"
                 label="Allow Public Users"
                 value={this.state.tenant.allowPublicUsers}
-                onChange={null}
+                onChange={e => {
+                  this.setState({                    
+                    ...this.state,
+                    tenant: {
+                      ...this.state.tenant,
+                      allowPublicUsers: e.target.checked
+                    }
+                  });
+                }}
               />
               <button
                 type="button"
-                onClick={this.createTenant}
+                onClick={this.updateTenant}
                 className="btn btn-primary"
               >
                 Update

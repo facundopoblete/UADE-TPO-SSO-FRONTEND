@@ -36,7 +36,7 @@ class UsersPage extends Component {
             onClick={this.createPedido}
             className="btn btn-primary"
           >
-            Crear Usuario
+            Create new user
           </button>
         </div>
         <div className="row">

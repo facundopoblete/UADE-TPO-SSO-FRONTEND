@@ -36,10 +36,33 @@ export async function deleteUser(user) {
   }
 }
 
+export async function updateUser(user) {
+  try {
+    const response = await fetch(baseUrl + "/" + user.id, {
+      method: "PUT",
+      body: JSON.stringify({
+        fullName: user.fullName,
+        metadata: user.metadata,
+        extra_claims: user.extra_claims,
+      }),
+      headers: { "Content-Type": "application/json", ...(await authHeader()) }
+    });
+    return await handleResponse(response);
+  } catch (ex) {
+    handleError(ex);
+  }
+}
+
 export async function createUser(user) {
   try {
     const response = await fetch(baseUrl, {
-      headers: await authHeader()
+      method: "POST",
+      body: JSON.stringify({
+        fullName: user.fullName,
+        email: user.email,
+        password: user.password
+      }),
+      headers: { "Content-Type": "application/json", ...(await authHeader()) }
     });
     return await handleResponse(response);
   } catch (ex) {
