@@ -15,7 +15,6 @@ export async function getTenant() {
 
 export async function createNewTenant(name) {
   try {
-    alert(baseUrl);
     const response = await fetch(baseUrl, {
       method: "POST",
       body: JSON.stringify({ name }),

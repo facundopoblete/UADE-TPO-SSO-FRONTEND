@@ -25,6 +25,7 @@ class HomePage extends React.Component {
 
   updateTenant = async () => {
     try {
+      // TODO: update tenant
       let a = 3;
     } catch (e) {
       alert("error");
