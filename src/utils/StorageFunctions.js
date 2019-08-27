@@ -1,11 +1,12 @@
-export async function saveUser(jwt) {
-  localStorage.setItem("user", jwt);
-}
+import * as Config from "../Configs";
+
+// eslint-disable-next-line no-undef
+export const SSO = new SSOAuth({
+  tenantId: Config.TenantId,
+  loginCallback: Config.CallbackUrl,
+  logoutCallback: Config.HomeUrl
+});
 
 export function getUser() {
-  return localStorage.getItem("user");
-}
-
-export async function deleteUser() {
-  localStorage.removeItem("user");
+  return SSO.getJWT();
 }

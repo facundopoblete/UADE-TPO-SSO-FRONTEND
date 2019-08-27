@@ -1,19 +1,13 @@
 /* eslint react/prop-types: 0 */
 
 import React from "react";
-import {
-  Route,
-  Switch,
-  BrowserRouter as Router,
-  Redirect
-} from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import UsersPage from "./users/UsersPage";
 import Header from "./common/Header";
 import HomePage from "./HomePage";
 import UserPage from "./users/UserPage";
 import TenantSettingsPage from "./settings/tenantSettingsPage";
 import * as StorageFunctions from "../utils/StorageFunctions";
-import * as Configs from "../Configs";
 
 function App() {
   return (
@@ -35,7 +29,7 @@ function App() {
 
 class Callback extends React.Component {
   componentDidMount() {
-    StorageFunctions.saveUser(window.location.hash.substring(1));
+    StorageFunctions.SSO.saveUserToken();
     this.props.history.replace("/home");
   }
 
@@ -46,8 +40,7 @@ class Callback extends React.Component {
 
 class Logout extends React.Component {
   async componentDidMount() {
-    StorageFunctions.deleteUser();
-    window.location.replace(Configs.LogoutUrl);
+    StorageFunctions.SSO.logout();
   }
 
   render() {
@@ -67,7 +60,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Route
           render={() => {
-            window.location.replace(Configs.LoginUrl);
+            StorageFunctions.SSO.login();
             return <></>;
           }}
         />
