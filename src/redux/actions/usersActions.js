@@ -60,9 +60,9 @@ export function createUser(user) {
   return async function(dispatch) {
     dispatch(requestActions.informNewRequest());
     try {
-      let newUser = await usersApi.createUser(user.id);
-      dispatch(deleteUserSuccess(newUser));
-    } catch {
+      let newUser = await usersApi.createUser(user);
+      dispatch(createUserSuccess(newUser));
+    } catch (e) {
       dispatch(createUserFail());
     }
   };
@@ -72,9 +72,9 @@ export function deleteUser(user) {
   return async function(dispatch) {
     dispatch(requestActions.informNewRequest());
     try {
-      await usersApi.deleteUser(user.id);
+      await usersApi.deleteUser(user);
       dispatch(deleteUserSuccess(user));
-    } catch {
+    } catch (e) {
       dispatch(deleteUserFail());
     }
   };

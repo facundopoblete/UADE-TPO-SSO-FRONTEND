@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import * as usersApi from "../../api/usersApi";
 import TextInput from "../common/TextInput";
 import ReactJson from "react-json-view";
-import locale from "react-json-editor-ajrm/locale/en";
 
 const DEFAULT_STATE = {};
 
@@ -115,7 +114,6 @@ class UserPage extends Component {
                         ? {}
                         : JSON.parse(this.state.user.metadata)
                     }
-                    locale={locale}
                     height="200px"
                   />
                 </div>
@@ -132,7 +130,6 @@ class UserPage extends Component {
                         ? {}
                         : JSON.parse(this.state.user.extraClaims)
                     }
-                    locale={locale}
                     height="200px"
                     theme="monokai"
                     onEdit={e => {

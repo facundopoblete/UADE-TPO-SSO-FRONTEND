@@ -2,6 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 
 export default function productosReduxReducer(state = [], action) {
   switch (action.type) {
+    case actionTypes.CREATE_USER_SUCCESS:
+      return [...state].concat(action.user);
     case actionTypes.GET_USERS_SUCCESS:
       return [...action.users];
     case actionTypes.GET_USERS_FAIL:

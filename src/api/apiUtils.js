@@ -5,8 +5,12 @@ export async function handleResponse(response) {
     if (response.headers.get("content-type") === null) {
       return;
     }
-    return response.json();
+    var text = await response.text();
+
+    if (text.length > 0) return JSON.parse(text);
+    return {}
   }
+
   if (response.status === 400) {
     const error = await response.text();
     throw new Error(error);
