@@ -53,6 +53,25 @@ class HomePage extends React.Component {
         <div className="row">
           <div className="col-12">
             <form>
+            <TextInput
+                name="Id"
+                label="Tenant Id"
+                value={this.state.tenant.id}
+              />
+            <TextInput
+                name="Name"
+                label="Tenant Name"
+                value={this.state.tenant.name}
+                onChange={e => {
+                  this.setState({
+                    ...this.state,
+                    tenant: {
+                      ...this.state.tenant,
+                      name: e.target.value
+                    }
+                  });
+                }}
+              />
               <TextInput
                 name="Name"
                 label="Tenant Name"
