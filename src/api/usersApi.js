@@ -43,7 +43,7 @@ export async function updateUser(user) {
       body: JSON.stringify({
         fullName: user.fullName,
         metadata: user.metadata,
-        extra_claims: user.extra_claims,
+        extraClaims: user.extraClaims,
       }),
       headers: { "Content-Type": "application/json", ...(await authHeader()) }
     });
