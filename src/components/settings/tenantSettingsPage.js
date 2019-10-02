@@ -57,20 +57,7 @@ class HomePage extends React.Component {
                 name="Id"
                 label="Tenant Id"
                 value={this.state.tenant.id}
-              />
-            <TextInput
-                name="Name"
-                label="Tenant Name"
-                value={this.state.tenant.name}
-                onChange={e => {
-                  this.setState({
-                    ...this.state,
-                    tenant: {
-                      ...this.state.tenant,
-                      name: e.target.value
-                    }
-                  });
-                }}
+                disabled="disabled"
               />
               <TextInput
                 name="Name"
