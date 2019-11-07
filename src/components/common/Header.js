@@ -62,6 +62,23 @@ const Header = () => {
             <li className="nav-item">
               <NavLink
                 className="nav-link"
+                to="/machines"
+                activeStyle={activeStyle}
+              >
+                <span
+                  className="d-block d-md-none"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse"
+                >
+                  Machines
+                </span>
+                <span className="d-none d-md-block">Machines</span>
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
                 to="/logout"
                 activeStyle={activeStyle}
               >

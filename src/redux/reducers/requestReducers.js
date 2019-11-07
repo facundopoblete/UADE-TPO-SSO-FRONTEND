@@ -10,6 +10,8 @@ export default function requestReduxReducer(state = 0, action) {
     case actionTypes.GET_USER_SUCCESS:
     case actionTypes.CREATE_USER_FAIL:
     case actionTypes.CREATE_USER_SUCCESS:
+    case actionTypes.GET_MACHINES_SUCCESS:
+    case actionTypes.GET_MACHINES_FAIL:
       return state - 1;
     default:
       return state;

@@ -6,6 +6,7 @@ import UsersPage from "./users/UsersPage";
 import Header from "./common/Header";
 import HomePage from "./HomePage";
 import UserPage from "./users/UserPage";
+import MachinePage from "./MachinePage";
 import TenantSettingsPage from "./settings/tenantSettingsPage";
 import * as StorageFunctions from "../utils/StorageFunctions";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/callback" component={Callback} />
           <PrivateRoute path="/logout" component={Logout} />
           <PrivateRoute path="/users" component={UsersPage} />
+          <PrivateRoute path="/machines" component={MachinePage} />
           <PrivateRoute path="/home" component={HomePage} />
           <PrivateRoute path="/settings" component={TenantSettingsPage} />
           <PrivateRoute path="/user/:id?" component={UserPage} />
