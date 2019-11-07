@@ -126,7 +126,7 @@ class MachinePage extends Component {
               <table className="table table-hover">
                 <thead className="thead-light">
                   <tr>
-                    <th scope="col">Email</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Id</th>
                     <th scope="col">Secret</th>
                     <th scope="col">Delete</th>
